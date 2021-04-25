@@ -38,13 +38,16 @@ map.addControl(new MapboxInspect({
 }))
 */
 map.on('load', function () {
-  map.addSource('mapbox-dem', {
+  map.addSource('h', {
     'type': 'raster-dem',
-    'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    'tiles': [
+      'https://optgeo.github.io/10b512-7-113-50/zxy/{z}/{x}/{y}.webp'
+    ],
     'tileSize': 512,
-    'maxzoom': 14
+    'maxzoom': 13,
+    'minzoom': 3
   })
-  map.setTerrain({ 'source': 'mapbox-dem' })
+  map.setTerrain({ 'source': 'h' })
   map.addLayer({
     'id': 'sky',
     'type': 'sky',
